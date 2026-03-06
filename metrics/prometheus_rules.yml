@@ -1,0 +1,19 @@
+groups:
+  - name: example_alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: avg(rate(node_cpu_seconds_total{mode!="idle"}[5m])) > 0.9
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High CPU usage detected"
+          description: "Average CPU usage across nodes is above 90% for 5 minutes."
+      - alert: SuspiciousLoginAttempts
+        expr: increase(security_failed_login_total[10m]) > 5
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Spike in failed login attempts"
+          description: "More than 5 failed login attempts detected in the last 10 minutes."
