@@ -1,42 +1,63 @@
 # Security-Observability-Toolkit
 
-This project is a curated collection of resources to help you build and operate a robust security observability and monitoring stack.
+[![CI](https://github.com/Popoo2020/Security-Observability-Toolkit/actions/workflows/ci.yml/badge.svg)](https://github.com/Popoo2020/Security-Observability-Toolkit/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-It provides examples for:
+**Security-Observability-Toolkit** is a compact reference toolkit for security monitoring and observability patterns.
 
-- Infrastructure and application metrics using **Prometheus**.
-- Visualizations using **Grafana** dashboards.
-- Log-based detection queries for **Splunk** and **IBM QRadar**.
-- Documentation on best practices for monitoring and incident detection.
+It currently provides:
 
-Use this toolkit as a starting point to instrument your systems, create meaningful alerts, and visualize the health and security posture of your environment.
+- Prometheus alert-rule examples for infrastructure and security signals.
+- Documentation for building a basic monitoring and incident-detection workflow.
+- A foundation for adding Grafana dashboards and SIEM queries in a controlled, reviewable way.
 
-## Features
+> **Status:** documentation and reference-rule baseline.  
+> This repository is useful as a supporting portfolio project, but it is not positioned as a production monitoring platform.
 
-- **Metrics & Alerts**: Sample Prometheus alert rules to detect high CPU usage and spikes in failed authentication attempts.
-- **Dashboards**: Grafana dashboard JSON to visualize CPU usage and failed login attempts.
-- **Detection Queries**: Example SPL and AQL queries to identify suspicious login patterns in Splunk and QRadar.
-- **Documentation**: Guidelines on how to extend and integrate the toolkit.
+## Current repository structure
 
-## Getting Started
+```text
+metrics/
+  prometheus_rules.yml
 
-1. Clone this repository.
-2. Import `metrics/prometheus_rules.yml` into your Prometheus server.
-3. Import `dashboards/grafana/sample_dashboard.json` into your Grafana instance (update datasource if necessary).
-4. Load the detection queries into your SIEM platform and customize them to fit your data sources.
-5. Read through `docs/observability.md` for more details and next steps.
+docs/
+  observability.md
 
-## Roadmap
+.github/workflows/
+  ci.yml
+```
 
-Future improvements may include:
-- Additional metrics and alert rules (disk usage, network anomalies).
-- More comprehensive dashboards with panels for error rates and latency.
-- Queries and detection rules for other SIEM platforms (e.g., Elastic Security).
-- Automation scripts to deploy and configure Prometheus and Grafana.
+## Implemented content
 
-## Contributing
+| Area | Current status |
+|---|---|
+| Prometheus alert rules | Implemented |
+| Observability guidance | Implemented |
+| CI validation for YAML and documentation references | Implemented |
+| Grafana dashboard examples | Planned |
+| Splunk / QRadar query examples | Planned |
+| Deployment automation | Planned |
 
-Contributions are welcome! Please open issues to suggest new metrics, dashboards, queries, or improvements. When submitting pull requests, provide a clear description of the change and any relevant context.
+## Getting started
+
+1. Review `metrics/prometheus_rules.yml`.
+2. Adapt alert thresholds and metric names to your real telemetry sources.
+3. Read `docs/observability.md` for monitoring design notes.
+4. Extend the repository with dashboards, SIEM queries or deployment examples as needed.
+
+## Validation
+
+The CI workflow validates that:
+
+- YAML files parse correctly,
+- README/documentation references stay aligned with files that actually exist.
+
+## Known limitations
+
+- The current repository contains reference examples only.
+- The alert expressions must be tuned to real metric names and operational thresholds before use.
+- Grafana dashboards and SIEM query files are planned, not currently included.
+- This toolkit does not replace a production monitoring architecture, alert-routing process or incident-response workflow.
 
 ## License
 
